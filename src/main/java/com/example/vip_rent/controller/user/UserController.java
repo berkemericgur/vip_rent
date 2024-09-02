@@ -32,6 +32,20 @@ public class UserController {
         return this.userService.getUserById(userId);
     }
 
+    @GetMapping(value = "/getByUsername")
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public DataResult<User> getByUsername(@RequestParam String username){
+
+        return this.userService.findByUsername(username);
+    }
+
+    @GetMapping(value = ("/getByIdentity"))
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    public DataResult<User> getByIdentityNumber(String identityNumber){
+
+        return this.userService.findByIdentityNumber(identityNumber);
+    }
+
     @PostMapping(value = "/save")
     @ResponseStatus(value = HttpStatus.CREATED)
     public Result save(@RequestBody UserRequest request){

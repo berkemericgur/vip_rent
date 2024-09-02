@@ -10,9 +10,9 @@ import java.util.List;
 public interface IUserService {
 
     DataResult<List<User>> getAllUsers();
-    DataResult getUserById(Long userId);
-    //Result findByUsername(String username);
-    //Result findByIdentityNumber(String identityNumber);
+    DataResult<User> getUserById(Long userId);
+    DataResult<User> findByUsername(String username);
+    DataResult<User> findByIdentityNumber(String identityNumber);
     Result saveUser(UserRequest request);
     Result updateUser(Long userId, UserRequest request);
     Result deleteUser(Long userId);

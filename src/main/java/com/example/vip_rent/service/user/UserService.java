@@ -33,11 +33,36 @@ public class UserService implements IUserService {
     public DataResult<User> getUserById(Long userId) {
 
         Optional<User> user = this.userRepository.findById(userId);
+
         if (user.isEmpty())
             return new DataResult<>(null,
                     Result.showMessage(Result.SERVER_ERROR, "User not found"));
         return new DataResult<>(user.get(),
                 Result.showMessage(Result.SUCCESS, "User listed succesfully."));
+    }
+
+    @Override
+    public DataResult<User> findByUsername(String username){
+
+        Optional<User> user = this.userRepository.findUserByUserName(username);
+
+        return user.map(value ->
+                new DataResult<>(value, Result.showMessage(Result.SUCCESS, "User found successfully")))
+                .orElseGet(() ->
+                        new DataResult<>(null, Result.showMessage(Result.SERVER_ERROR, "User not found")));
+
+    }
+
+    @Override
+    public DataResult<User> findByIdentityNumber(String identityNumber){
+
+        Optional<User> user = this.userRepository.findUserByIdentityNumber(identityNumber);
+
+        //(user.isEmpty) ifadesinin lambda kullanımı
+        return user.map(value ->
+                new DataResult<>(value, Result.showMessage(Result.SUCCESS, "User found successfully")))
+                .orElseGet(() ->
+                        new DataResult<>(null, Result.showMessage(Result.SERVER_ERROR, "User not found")));
     }
 
     @Override

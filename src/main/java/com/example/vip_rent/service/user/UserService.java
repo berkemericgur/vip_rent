@@ -66,25 +66,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Result saveUser(UserRequest request) {
-
-        if (request.getUsername() == null || request.getUsername().isEmpty())
-            return null;
-        if (request.getPassword() == null || request.getPassword().isEmpty())
-            return null;
-        if (request.getEmail() == null || request.getEmail().isEmpty())
-            return null;
-        if (request.getIdentityNumber() == null || request.getIdentityNumber().isEmpty())
-            return null;
-        if (request.getFirstName() == null || request.getFirstName().isEmpty())
-            return null;
-        if (request.getLastName() == null || request.getLastName().isEmpty())
-            return null;
-        if (request.getPhoneNumber() == null || request.getPhoneNumber().isEmpty())
-            return null;
+    public DataResult<User> saveUser(UserRequest request) {
 
         User createdUser = User.builder()
-                .userName(request.getUsername())
+                .userName(request.getUserName())
                 .password(request.getPassword())
                 .email(request.getEmail())
                 .identityNumber(request.getIdentityNumber())
@@ -98,7 +83,8 @@ public class UserService implements IUserService {
         } catch (Exception e) {
             return null;
         }
-        return Result.showMessage(Result.SUCCESS, "User saved successfully");
+        return new DataResult<>(createdUser,
+                Result.showMessage(Result.SUCCESS, "User created successfully."));
     }
 
     @Override
@@ -111,7 +97,7 @@ public class UserService implements IUserService {
 
         User updatedUser = isExistUser.get();
 
-        updatedUser.setUserName(request.getUsername());
+        updatedUser.setUserName(request.getUserName());
         updatedUser.setPassword(request.getPassword());
         updatedUser.setEmail(request.getEmail());
         updatedUser.setPhoneNumber(request.getPhoneNumber());

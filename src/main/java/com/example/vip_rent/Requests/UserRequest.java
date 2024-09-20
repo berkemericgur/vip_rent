@@ -1,4 +1,4 @@
-package com.example.vip_rent.dto;
+package com.example.vip_rent.Requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package com.example.vip_rent.controller.user;
 
-import com.example.vip_rent.dto.UserRequest;
+import com.example.vip_rent.Requests.UserRequest;
 import com.example.vip_rent.modal.entity.user.User;
 import com.example.vip_rent.result.DataResult;
 import com.example.vip_rent.result.Result;

@@ -1,10 +1,13 @@
 package com.example.vip_rent.modal.entity.user;
 
+import com.example.vip_rent.modal.entity.car.Car;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -38,4 +41,7 @@ public class User {
 
     @Column(name = "identity_number")
     private String identityNumber;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Car> carList;
 }

@@ -1,6 +1,6 @@
 package com.example.vip_rent.service.user;
 
-import com.example.vip_rent.dto.UserRequest;
+import com.example.vip_rent.Requests.UserRequest;
 import com.example.vip_rent.modal.entity.user.User;
 import com.example.vip_rent.repository.user.UserRepository;
 import com.example.vip_rent.result.DataResult;

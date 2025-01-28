@@ -1,20 +1,4 @@
-# vip_rent
 
-
-# Technologies Used
-
-
-Java (Version 17)
-
-Spring Boot
-
-Spring Data JPA
-
-PostgreSQL
-
-Lombok
-
-Maven
 
 # Postman Tests
 
